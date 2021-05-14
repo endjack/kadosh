@@ -1,7 +1,48 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
 <form method="POST">
 {% csrf_token %}
-{{ form.as_p }}
 
-<button type="submit">Salvar</button>
+  <div class="mb-3">
+    <label for="id_nome" class="form-check-label">Nome</label>
+    {{ form.nome }}
+  </div>
+  <div class="mb-3 "> 
+    <label class="form-check-label" for="id_telefone">Telefone</label>
+    {{ form.telefone }}
+  </div>
+   <div class="mb-3 "> 
+    <label class="form-check-label" for="id_grupo_membro">Grupo</label>
+    {{ form.grupo_membro }}
+  </div>
+   <div class="mb-3 "> 
+    <label class="form-check-label" for="id_ministerios">Ministérios</label>
+    {{ form.ministerios }}
+  </div>
+ 
+
+<div class="mb-3 ">
+    <label class="form-check-label" for="id_data_aniversario">Data de Aniversário</label>
+    <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+    {{ form.data_aniversario }}
+    <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+    </div>
+    </div>
+</div>
+
+ <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
+
+
+<script>
+  $(function () {
+    $("#datetimepicker1").datetimepicker({
+      format: 'd/m/Y',
+    });
+  });
+</script>
+
+{% endblock conteudo %}
 

@@ -1,7 +1,132 @@
-<form method="post">
-    {% csrf_token %}
-    <input type="hidden" name="next" value="{{ next }}">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Login</title>
+
+<style>
+.login-container{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.login-logo{
+    position: relative;
+    margin-left: -41.5%;
+}
+.login-logo img{
+    position: absolute;
+    width: 20%;
+    margin-top: 19%;
+    background: #282726;
+    border-radius: 4.5rem;
+    padding: 5%;
+}
+.login-form-1{
+    padding: 9%;
+    background:#282726;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-1 h3{
+    text-align: center;
+    margin-bottom:12%;
+    color:#fff;
+}
+.login-form-2{
+    padding: 9%;
+    background: #f05837;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-2 h3{
+    text-align: center;
+    margin-bottom:12%;
+    color: #fff;
+}
+.btnSubmit{
+    font-weight: 600;
+    width: 50%;
+    color: #282726;
+    background-color: #fff;
+    border: none;
+    border-radius: 1.5rem;
+    padding:2%;
+}
+.btnForgetPwd{
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+.btnForgetPwd:hover{
+    text-decoration:none;
+    color:#fff;
+}
+</style>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">KADOSH</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">  
+        <!-- Add algum item navbar-->      
+      </ul>
+    </div>
+    {% if user.is_authenticated %}
+      <div class="d-flex">
+        <a class="nav-link text-danger" href="../accounts/logout" tabindex="-1" aria-disabled="true">Sair</a>
+
+        <button type="button" class="btn btn-light">
+          Avisos <span class="badge bg-dark text-light">9</span>
+          <span class="visually-hidden">Notificações de Avisos</span>
+        </button>
+    {% else %}
+          <a class="nav-link" href="../login" tabindex="-1" aria-disabled="true">Entrar</a>
+    </div>
+    {% endif %}
+  </div>
+</nav>
+
+<!-- Login Form --> 
+<div class="container login-container">
+    <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 login-form-1">
+     <h3>Login KADOSH</h3>
+    
+    <form method="post"> 
+     {% csrf_token %}  
+    <input type="hidden" name="next" value="{{ next }}">    
 
     {{ form.as_p }}
-    <button type="submit">Entrar</button>
-</form>
+
+    <!-- <div class="form-group">
+        <input type="text" class="form-control" placeholder="Your Email *" value="" />
+    </div>
+     <div class="form-group">
+        <input type="password" class="form-control" placeholder="Your Password *" value="" />
+    </div><br> -->
+    <div class="form-group">
+        <input type="submit" class="btnSubmit" value="Entrar" />
+    </div>
+    <div class="form-group">
+        <a href="#" class="btnForgetPwd">Esqueci a senha</a>
+    </div>
+    </form>
+                    
+</div>
+
+
+</body>
+</html>
+
+
+
+
