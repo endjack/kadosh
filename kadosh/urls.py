@@ -9,7 +9,7 @@ urlpatterns = [
     path('', login_required(MembroListView.as_view()), name='index'),
     path('sobre/', SobreView.as_view(), name='sobre'),
     path('criar/', login_required(MembroCreateView.as_view()), name='criar_membro'),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('django.contrib.auth.urls')), 
     
     
     
