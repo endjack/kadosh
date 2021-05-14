@@ -3,9 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, TemplateView, CreateView
 from .models import *
 
-
 # Create your views here.
-
 
 class MembroListView(ListView):
     model= Membro
@@ -14,7 +12,6 @@ class MembroListView(ListView):
 
     def get_queryset(self):
         return Membro.objects.all()
-
 
 class MembroCreateView(CreateView):
     model = Membro
